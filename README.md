@@ -234,6 +234,61 @@ timeline.setCycleCount(1); // Run the timeline once
 timeline.play();
 ```
 
+* ## Pagination
+### Import Statements for Pagination
+```java
+import javafx.scene.Scene;
+```
+
+### Initialize Pagination
+```java
+// Create Pagination with 4 pages
+Pagination pagination = new Pagination(4);
+pagination.setPageFactory(this::createPage);
+
+BorderPane root = new BorderPane();
+// Set pagination at the center of the displayed root on stage
+root.setCenter(pagination);
+// Outside the scope of start() method, inside Application()
+private VBox createPage(int pageIndex) {
+    VBox pageContent = new VBox();
+    pageContent.setSpacing(10);
+
+    if (pageIndex == 0) {
+    // Page 1: ListView
+    pageContent.getChildren().addAll(listView);
+
+    } else if (pageIndex == 1) {
+    // Page 2: TableView
+    pageContent.getChildren().addAll(tableView);
+    } else if (pageIndex == 2) {
+    // Page 3: TreeView
+    pageContent.getChildren().addAll(treeView, datePickerBox);
+    } else if (pageIndex == 3){
+    // Page 4: HTMLEditor for HTML Manipulation
+    HTMLEditor htmlEditor = new HTMLEditor();
+    pageContent.getChildren().addAll(htmlEditor);
+    }
+
+    return pageContent;
+    }
+```
+
+* ## HTML Editor
+### Import Statements for HTML Editor
+```java
+import javafx.scene.web.HTMLEditor;
+```
+
+### Initialize an HTML Editor
+```java
+VBox pageContent = new VBox();
+HTMLEditor htmlEditor = new HTMLEditor();
+pageContent.getChildren().addAll(htmlEditor);
+```
+
+---
+
 # Displaying Components
 ### Create a JavaFX Application
 ```java
